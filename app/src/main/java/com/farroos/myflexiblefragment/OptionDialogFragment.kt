@@ -44,11 +44,11 @@ class OptionDialogFragment : DialogFragment() {
         rbMou = view.findViewById(R.id.rb_mou)
         rbMoyes = view.findViewById(R.id.rb_moyes)
 
-        btnChoose.setOnClickListener{
+        btnChoose.setOnClickListener {
             val checkedRadioButtonId = rgOptions.checkedRadioButtonId
-            if (checkedRadioButtonId != -1){
+            if (checkedRadioButtonId != -1) {
                 var coach: String? = null
-                when(checkedRadioButtonId){
+                when (checkedRadioButtonId) {
                     R.id.rb_saf -> coach = rbSaf.text.toString().trim()
                     R.id.rb_moyes -> coach = rbMoyes.text.toString().trim()
                     R.id.rb_mou -> coach = rbMou.text.toString().trim()
@@ -61,7 +61,7 @@ class OptionDialogFragment : DialogFragment() {
             }
         }
 
-        btnClose.setOnClickListener{
+        btnClose.setOnClickListener {
             dialog?.cancel()
         }
 

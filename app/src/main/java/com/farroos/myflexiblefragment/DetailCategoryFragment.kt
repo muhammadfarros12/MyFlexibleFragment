@@ -1,5 +1,6 @@
 package com.farroos.myflexiblefragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,7 +20,7 @@ class DetailCategoryFragment : Fragment() {
 
     var description: String? = null
 
-    companion object{
+    companion object {
         var EXTRA_NAME = "extra_name"
         var EXTRA_DESCRIPTION = "extra_description"
     }
@@ -44,25 +45,34 @@ class DetailCategoryFragment : Fragment() {
             val mOptionDialogFragment = OptionDialogFragment()
 
             val mFragmentManager = childFragmentManager
-            mOptionDialogFragment.show(mFragmentManager, OptionDialogFragment::class.java.simpleName)
+            mOptionDialogFragment.show(
+                mFragmentManager,
+                OptionDialogFragment::class.java.simpleName
+            )
+        }
+
+        btnProfile.setOnClickListener {
+            val mIntent = Intent(activity, ProfileActivity::class.java)
+            startActivity(mIntent)
         }
     }
 
-    internal var optionDialogListener: OptionDialogFragment.OnOptionDialogListener = object : OptionDialogFragment.OnOptionDialogListener{
-        override fun onOptionChosen(text: String?) {
-            Toast.makeText(activity, text, Toast.LENGTH_SHORT).show()
+    internal var optionDialogListener: OptionDialogFragment.OnOptionDialogListener =
+        object : OptionDialogFragment.OnOptionDialogListener {
+            override fun onOptionChosen(text: String?) {
+                Toast.makeText(activity, text, Toast.LENGTH_SHORT).show()
+            }
         }
-    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             val descFromBundle = savedInstanceState.getString(EXTRA_DESCRIPTION)
             description = descFromBundle
         }
 
-        if (arguments != null){
+        if (arguments != null) {
             val categoryName = arguments?.getString(EXTRA_NAME)
             tvCategoryName.text = categoryName
             tvCategoryDescription.text = description
