@@ -1,0 +1,12 @@
+Kita akan melakukan restuktur Project ini menggunakan KTX(tanpa merubah isi)
+berikut untuk langkah-langkahnya:
+1. tambahkan dependency berikut
+    implementation "androidx.fragment:fragment-ktx:1.2.5"
+    file: build.gradle
+2. mengubah code di MainActivity menggunakan KTX
+    file: MainActivity
+3. berikutnya mengubah di HomeFragment
+    file: HomeFragment
+4. terakhir kita mengisi di file CategoryFragment
+    file: CategoryFragment
+

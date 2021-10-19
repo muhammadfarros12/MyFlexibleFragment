@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.commit
 import kotlin.concurrent.fixedRateTimer
 
 class CategoryFragment : Fragment(), View.OnClickListener {
@@ -35,12 +36,19 @@ class CategoryFragment : Fragment(), View.OnClickListener {
             mDetailCategoryFragment.arguments = mBundle
             mDetailCategoryFragment.description = description
 
-            val mFragmentManager = fragmentManager
+            /*val mFragmentManager = fragmentManager
             mFragmentManager?.beginTransaction()?.apply {
                 replace(R.id.frame_container, mDetailCategoryFragment, DetailCategoryFragment::class.java.simpleName)
                 addToBackStack(null)
                 commit()
+            }*/
+
+            val mFragmentManager = parentFragmentManager
+            mFragmentManager.commit {
+                addToBackStack(null)
+                replace(R.id.frame_container, mDetailCategoryFragment, DetailCategoryFragment::class.java.simpleName)
             }
+
         }
     }
 
